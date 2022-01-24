@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 export interface AuthResponseData {
+  displayName: string;
   kind: string;
   idToken: string;
   email: string;
@@ -63,7 +64,9 @@ export class AuthEffects {
       switchMap((action) => {
         return this.http
           .post<AuthResponseData>(
-            'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' +
+            // The auth urls shown on the Firebase page (https://firebase.google.com/docs/reference/rest/auth) have changed recently.
+            // 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' +
+            'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
               environment.firebaseAPIKey,
             {
               email: action.email,
@@ -97,7 +100,9 @@ export class AuthEffects {
       switchMap((action) => {
         return this.http
           .post<AuthResponseData>(
-            'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' +
+            // The auth urls shown on the Firebase page (https://firebase.google.com/docs/reference/rest/auth) have changed recently.
+            // 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' +
+            'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
               environment.firebaseAPIKey,
             {
               email: action.email,
