@@ -26,15 +26,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        
+
     - name: Install Dependencies
       run: npm ci
-      
+
     - name: Lint
       run: npm run lint
-      
+
     - name: Test
       run: npm run test:ci
-      
+
     - name: Prod Build
-      run: npm build:ci
+      run: npm build
