@@ -1,0 +1,12 @@
+:host {
+  --color-primary: #eb4964;
+  --color-secondary: orange;
+}
+
+a.navbar-brand {
+  color: var(--color-primary);
+}
+
+a.navbar-brand sub {
+  color: var(--color-secondary);
+}
